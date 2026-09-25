@@ -7,9 +7,9 @@
     <style>
         :root {
             --bg-color: #030508;
-            --card-bg: rgba(11, 16, 23, 0.85);
+            --card-bg: rgba(11, 16, 23, 0.45);
             --accent-color: #0084ff;
-            --border-color: #162235;
+            --border-color: rgba(22, 34, 53, 0.8);
             --text-color: #d1d9e6;
             --danger-color: #d90429;
             --gold-color: #c5a059;
@@ -43,7 +43,7 @@
             height: 100vh;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.35;
+            opacity: 0.45;
         }
 
         /* الشعار الضخم المتحرك خلف الشاشة */
@@ -52,24 +52,25 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(1);
-            width: 550px;
-            height: 550px;
-            opacity: 0.04;
+            width: 600px;
+            height: 600px;
+            opacity: 0.08;
             z-index: 1;
             pointer-events: none;
             animation: pulseLogo 12s infinite alternate ease-in-out;
         }
         @keyframes pulseLogo {
-            0% { transform: translate(-50%, -50%) scale(0.95) rotate(0deg); opacity: 0.03; }
-            100% { transform: translate(-50%, -50%) scale(1.05) rotate(5deg); opacity: 0.07; }
+            0% { transform: translate(-50%, -50%) scale(0.95) rotate(0deg); opacity: 0.05; }
+            100% { transform: translate(-50%, -50%) scale(1.05) rotate(5deg); opacity: 0.11; }
         }
 
-        /* شاشة تسجيل الدخول بالتصميم الواقعي */
+        /* شاشة تسجيل الدخول بالتصميم الواقعي والشفاف */
         .login-card {
             position: relative;
             z-index: 10;
-            background: rgba(8, 13, 20, 0.82);
-            backdrop-filter: blur(16px);
+            background: rgba(8, 13, 20, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(197, 160, 89, 0.4);
             border-radius: 14px;
             padding: 40px 35px;
@@ -101,7 +102,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #000;
+            background: rgba(0, 0, 0, 0.7);
             box-shadow: 0 0 25px rgba(197, 160, 89, 0.35);
             animation: glowPulse 3s infinite alternate;
         }
@@ -122,7 +123,7 @@
             letter-spacing: 1.5px;
         }
         .agency-name {
-            color: #64748b;
+            color: #8a9bb0;
             font-size: 10px;
             letter-spacing: 2.5px;
             margin-bottom: 25px;
@@ -142,7 +143,7 @@
         .input-group input, .input-group select, .input-group textarea {
             width: 100%;
             padding: 12px;
-            background: rgba(4, 6, 10, 0.9);
+            background: rgba(4, 6, 10, 0.65);
             border: 1px solid var(--border-color);
             border-radius: 6px;
             color: #fff;
@@ -154,12 +155,13 @@
         }
         .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
             border-color: var(--gold-color);
-            box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.3);
+            background: rgba(4, 6, 10, 0.85);
         }
         .search-box {
             margin-bottom: 15px;
             border-color: var(--gold-color) !important;
-            background: #09101a !important;
+            background: rgba(9, 16, 26, 0.6) !important;
         }
         .btn-login {
             width: 100%;
@@ -189,7 +191,7 @@
             margin-top: 10px;
         }
 
-        /* النظام الرئيسي المتناسق */
+        /* النظام الرئيسي الشفاف والمتناسق */
         #main-system {
             display: none;
             width: 100%;
@@ -207,8 +209,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(11, 16, 23, 0.9);
-            backdrop-filter: blur(12px);
+            background: rgba(11, 16, 23, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 18px 25px;
             border-radius: 10px;
             border: 1px solid var(--border-color);
@@ -221,7 +224,7 @@
             align-items: center;
         }
         .btn-leader-nav {
-            background: #171004;
+            background: rgba(23, 16, 4, 0.8);
             color: var(--gold-color);
             border: 1px solid var(--gold-color);
             padding: 8px 14px;
@@ -256,11 +259,12 @@
         }
         .badge-leader { background: var(--gold-color); color: #000; }
 
-        /* سطح المكتب والمجلدات */
+        /* تعديل الشفافية لمجلدات سطح المكتب للحد من قتامة الخلفية */
         .folder-grid-panel {
-            background: linear-gradient(145deg, rgba(9, 14, 23, 0.92) 0%, rgba(5, 8, 12, 0.95) 100%);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
+            background: rgba(8, 13, 20, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(197, 160, 89, 0.3);
             padding: 30px;
             border-radius: 12px;
             margin-bottom: 20px;
@@ -281,7 +285,7 @@
             border-radius: 50%;
             border: 2px solid var(--gold-color);
             box-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
-            background: #000;
+            background: rgba(0,0,0,0.6);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -307,8 +311,10 @@
         @media (max-width: 800px) { .folder-grid { grid-template-columns: 1fr; } }
         
         .folder-card {
-            background: linear-gradient(135deg, rgba(9, 16, 26, 0.9) 0%, rgba(4, 6, 10, 0.95) 100%);
-            border: 1px solid var(--border-color);
+            background: rgba(9, 16, 26, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(22, 34, 53, 0.9);
             border-radius: 10px;
             padding: 25px 20px;
             cursor: pointer;
@@ -331,7 +337,8 @@
         .folder-card:hover {
             border-color: var(--gold-color);
             transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.2);
+            background: rgba(15, 25, 40, 0.65);
+            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.25);
         }
         .folder-card:hover::before {
             width: 8px;
@@ -361,15 +368,16 @@
 
         .workspace-panel {
             display: none;
-            background: rgba(11, 16, 23, 0.9);
-            backdrop-filter: blur(12px);
+            background: rgba(11, 16, 23, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 20px;
         }
         .btn-back {
-            background: #04060a;
+            background: rgba(4, 6, 10, 0.7);
             color: var(--text-color);
             border: 1px solid var(--border-color);
             padding: 8px 16px;
@@ -389,14 +397,14 @@
         }
         @media (max-width: 768px) { .crypto-grid { grid-template-columns: 1fr; } }
         .crypto-box {
-            background: #04060a;
+            background: rgba(4, 6, 10, 0.6);
             border: 1px solid var(--border-color);
             padding: 18px;
             border-radius: 8px;
         }
 
         .crypto-result-box {
-            background: linear-gradient(135deg, #09121d 0%, #04060a 100%);
+            background: rgba(9, 18, 29, 0.65);
             border: 1px solid var(--gold-color);
             padding: 15px;
             border-radius: 8px;
@@ -416,14 +424,14 @@
             font-size: 14px;
             color: var(--success-color);
             word-break: break-all;
-            background: rgba(16, 185, 129, 0.05);
+            background: rgba(16, 185, 129, 0.08);
             padding: 8px;
             border-radius: 4px;
             border: 1px dashed rgba(16, 185, 129, 0.3);
         }
 
         .log-box {
-            background: #000;
+            background: rgba(0, 0, 0, 0.7);
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 15px;
@@ -439,20 +447,20 @@
 
         .data-card {
             border: 1px solid var(--border-color);
-            background: #04060a;
+            background: rgba(4, 6, 10, 0.6);
             border-radius: 6px;
             padding: 15px;
             margin-bottom: 12px;
             position: relative;
         }
-        .wanted-card { border-color: var(--danger-color); background: rgba(217, 4, 41, 0.05); }
+        .wanted-card { border-color: var(--danger-color); background: rgba(217, 4, 41, 0.08); }
         .badge-danger { background: var(--danger-color); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 3px; }
         .action-btns { display: flex; gap: 5px; }
         .btn-del-item { background: var(--danger-color); color: #fff; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: bold; }
         .btn-edit-item { background: var(--gold-color); color: #000; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: bold; }
 
         .collapsible-item {
-            background: #090e15;
+            background: rgba(9, 14, 21, 0.6);
             border: 1px solid var(--border-color);
             border-radius: 6px;
             margin-bottom: 10px;
@@ -461,14 +469,14 @@
         }
         .collapsible-header {
             padding: 14px 18px;
-            background: #04060a;
+            background: rgba(4, 6, 10, 0.6);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             user-select: none;
         }
-        .collapsible-header:hover { background: #0d1522; }
+        .collapsible-header:hover { background: rgba(13, 21, 34, 0.8); }
         .collapsible-title {
             color: var(--gold-color);
             font-weight: bold;
@@ -480,14 +488,14 @@
         .collapsible-body {
             display: none;
             padding: 18px;
-            background: #060a10;
+            background: rgba(6, 10, 16, 0.7);
             border-top: 1px solid var(--border-color);
         }
 
         .tree-container {
             margin-top: 15px;
             padding: 15px;
-            background: #020407;
+            background: rgba(2, 4, 7, 0.8);
             border: 1px dashed var(--gold-color);
             border-radius: 8px;
             text-align: center;
@@ -506,7 +514,7 @@
         .tree-line { width: 2px; height: 12px; background: var(--gold-color); margin: 0 auto; }
 
         .report-classification {
-            background: rgba(220, 38, 38, 0.15);
+            background: rgba(220, 38, 38, 0.2);
             color: #f87171;
             border: 1px solid #ef4444;
             padding: 2px 8px;
@@ -518,7 +526,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 8px;
-            background: #04060a;
+            background: rgba(4, 6, 10, 0.7);
             padding: 10px;
             border-radius: 4px;
             font-size: 11px;
@@ -529,9 +537,9 @@
 
         table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
         th, td { padding: 10px; border: 1px solid var(--border-color); text-align: right; }
-        th { background: #04060a; color: var(--gold-color); }
-        .leader-panel { border: 1px solid var(--gold-color); background: #090e15; padding: 25px; border-radius: 8px; margin-bottom: 20px; }
-        .user-list-item { display: flex; justify-content: space-between; align-items: center; background: #04060a; padding: 12px 15px; margin-top: 10px; border-radius: 6px; border: 1px solid var(--border-color); font-size: 13px; }
+        th { background: rgba(4, 6, 10, 0.8); color: var(--gold-color); }
+        .leader-panel { border: 1px solid var(--gold-color); background: rgba(9, 14, 21, 0.6); padding: 25px; border-radius: 8px; margin-bottom: 20px; }
+        .user-list-item { display: flex; justify-content: space-between; align-items: center; background: rgba(4, 6, 10, 0.6); padding: 12px 15px; margin-top: 10px; border-radius: 6px; border: 1px solid var(--border-color); font-size: 13px; }
         .img-preview { max-width: 100%; max-height: 250px; border-radius: 5px; margin-top: 8px; border: 1px solid var(--border-color); }
         video { max-width: 100%; border-radius: 5px; margin-top: 8px; border: 1px solid var(--border-color); }
     </style>
@@ -583,7 +591,7 @@
             </div>
         </div>
 
-        <!-- سطح المكتب الرئيسي بعد تسجيل الدخول -->
+        <!-- سطح المكتب الرئيسي الشفاف بعد تسجيل الدخول -->
         <div class="folder-grid-panel" id="folderHome">
             <div class="dashboard-header">
                 <div class="dashboard-logo">
@@ -666,7 +674,7 @@
             <div class="input-group">
                 <input type="text" id="reportSearch" class="search-box" placeholder="🔍 بحث في قاعدة بيانات التقارير..." oninput="renderReports()">
             </div>
-            <div style="background:#04060a; padding:15px; border-radius:6px; margin-bottom:20px; border:1px solid var(--border-color);">
+            <div style="background:rgba(4, 6, 10, 0.6); padding:15px; border-radius:6px; margin-bottom:20px; border:1px solid var(--border-color);">
                 <div class="input-group"><label>عنوان التقرير / المذكرة</label><input type="text" id="reportTitle" placeholder="عنوان التقرير"></div>
                 <div class="input-group"><label>تفاصيل التقرير الاستخباراتي</label><textarea id="reportDetails" rows="4" placeholder="اكتب تفاصيل التقرير..."></textarea></div>
                 <div class="input-group"><label>Citizen ID المرتبط بالتقرير</label><input type="text" id="reportCitizen" placeholder="مثال: CIA-102"></div>
@@ -688,7 +696,7 @@
             <div class="input-group">
                 <input type="text" id="wantedSearch" class="search-box" placeholder="🔍 بحث في داتابيس المطلوبين" oninput="renderWanted()">
             </div>
-            <div style="background:#04060a; padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid var(--border-color);">
+            <div style="background:rgba(4, 6, 10, 0.6); padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid var(--border-color);">
                 <div class="input-group"><label>اسم المطلوب</label><input type="text" id="wantedName" placeholder="Name"></div>
                 <div class="input-group">
                     <label>مستوى الخطورة</label>
@@ -711,7 +719,7 @@
             <div class="input-group">
                 <input type="text" id="recordsSearch" class="search-box" placeholder="🔍 بحث في السجل الجنائي للأشخاص" oninput="renderRecords()">
             </div>
-            <div style="background:#04060a; padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid var(--border-color);">
+            <div style="background:rgba(4, 6, 10, 0.6); padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid var(--border-color);">
                 <div class="input-group"><label>اسم المواطن</label><input type="text" id="recName" placeholder="John Doe"></div>
                 <div class="input-group"><label>Citizen ID</label><input type="text" id="recId" placeholder="CIA-102"></div>
                 <div class="input-group"><label>سجل الملاحظات والقضايا</label><textarea id="recNotes" rows="2" placeholder="الملاحظات"></textarea></div>
@@ -728,7 +736,7 @@
             <div class="input-group">
                 <input type="text" id="gangsSearch" class="search-box" placeholder="🔍 بحث في مخططات الاستخبارات والعصابات" oninput="renderGangs()">
             </div>
-            <div style="background:#04060a; padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid var(--border-color);">
+            <div style="background:rgba(4, 6, 10, 0.6); padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid var(--border-color);">
                 <div class="input-group"><label>اسم العصابة / التنظيم</label><input type="text" id="gangName" placeholder="Gang Name"></div>
                 <div class="input-group"><label>👑 اسم الرئيس (Leader)</label><input type="text" id="gangLeader" placeholder="اسم قائد العصابة"></div>
                 <div class="input-group"><label>🎖️ اسم النائب (Deputy)</label><input type="text" id="gangDeputy" placeholder="اسم نائب القائد"></div>
@@ -817,29 +825,55 @@
         }
         setInterval(drawMatrix, 35);
 
-        /* تشغيل صوت الذكاء الخشن الغليظ "Welcome to CIA SYSTEM" */
+        /* نظام صوتي سينمائي تكتيكي للذكاء الفدرالي بخلفية راديو واقعية */
         function playAccessSound() {
-            if ('speechSynthesis' in window) {
-                // إلغاء أي صبيّة صوتية سابقة
-                window.speechSynthesis.cancel();
-                
-                const utterance = new SpeechSynthesisUtterance("Welcome to CIA SYSTEM");
-                utterance.lang = "en-US";
-                utterance.pitch = 0.4;  // نبرة صوت خشنة ومنخفضة جداً
-                utterance.rate = 0.85;  // سرعة تكتيكية رزينة
+            try {
+                // 1. تشغيل النطق البشري
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const utterance = new SpeechSynthesisUtterance("Welcome to C.I.A System");
+                    utterance.lang = "en-US";
+                    utterance.pitch = 0.35; // صوت رجالي ضخم وعميق جداً
+                    utterance.rate = 0.82;  // سرعة رصينة وواقعية
 
-                // البحث عن صوت رجالي متاح في متصفح المستخدم
-                const voices = window.speechSynthesis.getVoices();
-                const maleVoice = voices.find(v => (v.name.includes('Male') || v.name.includes('David') || v.name.includes('Mark') || v.name.includes('Google US English')) && v.lang.startsWith('en'));
-                if (maleVoice) {
-                    utterance.voice = maleVoice;
+                    const voices = window.speechSynthesis.getVoices();
+                    const realisticMale = voices.find(v => 
+                        (v.name.includes('Natural') || v.name.includes('David') || v.name.includes('Male') || v.name.includes('Google US English')) && v.lang.startsWith('en')
+                    );
+                    if (realisticMale) utterance.voice = realisticMale;
+                    window.speechSynthesis.speak(utterance);
                 }
 
-                window.speechSynthesis.speak(utterance);
-            }
+                // 2. دمج مؤثرات صوتية تكتيكية من خلال Web Audio API لإضفاء الواقعية السينمائية
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // فلتر الصوت الراديوي (Bandpass Filter)
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = "bandpass";
+                filter.frequency.value = 1200;
+
+                // ضوضاء راديو لاسلكية قصيرة (Radio Beep & Static)
+                const bufferSize = audioCtx.sampleRate * 0.15;
+                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = buffer;
+                const gain = audioCtx.createGain();
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(audioCtx.destination);
+                noise.start();
+
+            } catch(e) { console.log("Audio play error", e); }
         }
 
-        // تحميل الأصوات مسبقاً في المتصفح
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = () => {
                 window.speechSynthesis.getVoices();
@@ -914,7 +948,7 @@
                 errorMsg.style.display = "none";
                 localStorage.setItem("active_cia_user", user);
                 
-                // نطق الصوت الخشن والغليظ عند تسجيل الدخول
+                // نطق الصوت البشري الواقعي عند تسجيل الدخول
                 playAccessSound();
                 
                 const loginCard = document.getElementById("login-screen");
@@ -1034,7 +1068,7 @@
                             <div>تاريخ الصدور: <b>${r.date}</b></div>
                             <div>رقم المرجعية: <b>#REF-${r.id.toString().slice(-5)}</b></div>
                         </div>
-                        <div style="color:#e2e8f0; font-size:13px; line-height:1.6; background:#04060a; padding:10px; border-radius:4px;">${r.details}</div>
+                        <div style="color:#e2e8f0; font-size:13px; line-height:1.6; background:rgba(4, 6, 10, 0.7); padding:10px; border-radius:4px;">${r.details}</div>
                         ${r.image ? `<div style="margin-top:10px;"><small style="color:var(--gold-color);">🖼️ صورة الدليل المرفقة:</small><br><img src="${r.image}" class="img-preview"></div>` : ''}
                         ${r.video ? `<div style="margin-top:10px;"><small style="color:var(--gold-color);">🎥 تسجيل الفيديو المرفق:</small><br><video controls src="${r.video}"></video></div>` : ''}
                     </div>
@@ -1131,7 +1165,7 @@
                             <h4 style="color:var(--accent-color);">${r.name}</h4>
                             <button class="btn-del-item" onclick="deleteRecord(${r.id})">حذف السجل</button>
                         </div>
-                        <p style="font-size:12px; color:#d1d9e6; background:#04060a; padding:10px; border-radius:4px;">${r.notes}</p>
+                        <p style="font-size:12px; color:#d1d9e6; background:rgba(4, 6, 10, 0.7); padding:10px; border-radius:4px;">${r.notes}</p>
                     </div>
                 `;
                 list.appendChild(div);
