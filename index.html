@@ -64,6 +64,65 @@
             100% { transform: translate(-50%, -50%) scale(1.05) rotate(5deg); opacity: 0.11; }
         }
 
+        /* شاشة فك التشفير لمدة 5 ثوانٍ */
+        #decryption-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(2, 4, 7, 0.92);
+            backdrop-filter: blur(25px);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .decrypt-box {
+            background: rgba(8, 13, 20, 0.7);
+            border: 1px solid var(--gold-color);
+            padding: 35px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.25);
+            max-width: 480px;
+            width: 90%;
+        }
+        .decrypt-title {
+            color: var(--gold-color);
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-family: monospace;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-color), var(--accent-color));
+            box-shadow: 0 0 10px var(--accent-color);
+            transition: width 0.1s linear;
+        }
+        .code-stream {
+            font-family: monospace;
+            font-size: 12px;
+            color: var(--success-color);
+            margin-top: 10px;
+            height: 20px;
+            overflow: hidden;
+            word-break: break-all;
+        }
+
         /* شاشة تسجيل الدخول بالتصميم الواقعي والشفاف */
         .login-card {
             position: relative;
@@ -79,11 +138,6 @@
             text-align: center;
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(197, 160, 89, 0.15);
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .login-card.login-success-anim {
-            transform: scale(1.08);
-            opacity: 0;
-            filter: blur(10px);
         }
         .subtitle-top {
             font-size: 10px;
@@ -259,7 +313,7 @@
         }
         .badge-leader { background: var(--gold-color); color: #000; }
 
-        /* تعديل الشفافية لمجلدات سطح المكتب للحد من قتامة الخلفية */
+        /* مجلدات سطح المكتب الشفافة */
         .folder-grid-panel {
             background: rgba(8, 13, 20, 0.45);
             backdrop-filter: blur(20px);
@@ -551,6 +605,18 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Seal_of_the_Central_Intelligence_Agency.svg" alt="CIA Logo">
     </div>
 
+    <!-- شاشة فك التشفير لمدة 5 ثوانٍ -->
+    <div id="decryption-screen">
+        <div class="decrypt-box">
+            <div class="decrypt-title">🔒 DECRYPTING CLASSIFIED DATA...</div>
+            <div style="font-size: 12px; color: #8a9bb0;">جاري فك تشفير البيانات الاستخباراتية وتأكيد الهوية</div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="decrypt-progress"></div>
+            </div>
+            <div class="code-stream" id="code-stream-text">0x7F80A... DECRYPTING HASH</div>
+        </div>
+    </div>
+
     <!-- شاشة تسجيل الدخول الواقعية -->
     <div class="login-card" id="login-screen">
         <div class="subtitle-top">CIA • FEDERAL DATA TERMINAL</div>
@@ -825,16 +891,47 @@
         }
         setInterval(drawMatrix, 35);
 
-        /* نظام صوتي سينمائي تكتيكي للذكاء الفدرالي بخلفية راديو واقعية */
-        function playAccessSound() {
+        /* توليد صوت شفرة مورس الحقيقي لنظام الاستخبارات */
+        let morseAudioInterval = null;
+        function startMorseCodeAudio() {
             try {
-                // 1. تشغيل النطق البشري
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                morseAudioInterval = setInterval(() => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    
+                    osc.type = "sine";
+                    osc.frequency.setValueAtTime(750 + (Math.random() * 200), audioCtx.currentTime); // تردد مورس
+                    
+                    const duration = Math.random() > 0.5 ? 0.06 : 0.18; // Dot or Dash
+                    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                    
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + duration);
+                }, 120);
+            } catch(e) { console.log(e); }
+        }
+
+        function stopMorseCodeAudio() {
+            if (morseAudioInterval) {
+                clearInterval(morseAudioInterval);
+                morseAudioInterval = null;
+            }
+        }
+
+        /* الصوت البشري الواقعي جداً مع فلتر اللاسلكي الفدرالي */
+        function playWelcomeVoice() {
+            try {
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel();
                     const utterance = new SpeechSynthesisUtterance("Welcome to C.I.A System");
                     utterance.lang = "en-US";
-                    utterance.pitch = 0.35; // صوت رجالي ضخم وعميق جداً
-                    utterance.rate = 0.82;  // سرعة رصينة وواقعية
+                    utterance.pitch = 0.35; // صوت غليظ ورصين
+                    utterance.rate = 0.82;
 
                     const voices = window.speechSynthesis.getVoices();
                     const realisticMale = voices.find(v => 
@@ -844,40 +941,25 @@
                     window.speechSynthesis.speak(utterance);
                 }
 
-                // 2. دمج مؤثرات صوتية تكتيكية من خلال Web Audio API لإضفاء الواقعية السينمائية
+                // طقطقة أجهزة اللاسلكي للتوثيق
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                
-                // فلتر الصوت الراديوي (Bandpass Filter)
-                const filter = audioCtx.createBiquadFilter();
-                filter.type = "bandpass";
-                filter.frequency.value = 1200;
-
-                // ضوضاء راديو لاسلكية قصيرة (Radio Beep & Static)
-                const bufferSize = audioCtx.sampleRate * 0.15;
+                const bufferSize = audioCtx.sampleRate * 0.12;
                 const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
                 const data = buffer.getChannelData(0);
-                for (let i = 0; i < bufferSize; i++) {
-                    data[i] = Math.random() * 2 - 1;
-                }
-
+                for (let i = 0; i < bufferSize; i++) { data[i] = Math.random() * 2 - 1; }
                 const noise = audioCtx.createBufferSource();
                 noise.buffer = buffer;
                 const gain = audioCtx.createGain();
-                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
-
-                noise.connect(filter);
-                filter.connect(gain);
+                gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+                noise.connect(gain);
                 gain.connect(audioCtx.destination);
                 noise.start();
-
-            } catch(e) { console.log("Audio play error", e); }
+            } catch(e) { console.log(e); }
         }
 
         if ('speechSynthesis' in window) {
-            window.speechSynthesis.onvoiceschanged = () => {
-                window.speechSynthesis.getVoices();
-            };
+            window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
         }
 
         const BIN_ID = "ضع_هنا_BIN_ID_الخاص_بك"; 
@@ -934,7 +1016,7 @@
         function checkAutoLogin() {
             const savedUser = localStorage.getItem("active_cia_user");
             if (savedUser && globalDatabase.users[savedUser]) {
-                openMainSystem(savedUser, false);
+                openMainSystem(savedUser);
             }
         }
 
@@ -948,21 +1030,39 @@
                 errorMsg.style.display = "none";
                 localStorage.setItem("active_cia_user", user);
                 
-                // نطق الصوت البشري الواقعي عند تسجيل الدخول
-                playAccessSound();
+                // بدء مرحلة فك التشفير لمدة 5 ثوانٍ مع صوت مورس
+                document.getElementById("login-screen").style.display = "none";
+                const decryptScreen = document.getElementById("decryption-screen");
+                decryptScreen.style.display = "flex";
                 
-                const loginCard = document.getElementById("login-screen");
-                loginCard.classList.add("login-success-anim");
-                
-                setTimeout(() => {
-                    openMainSystem(user, true);
-                }, 600);
+                startMorseCodeAudio();
+
+                let progress = 0;
+                const progressBar = document.getElementById("decrypt-progress");
+                const codeStream = document.getElementById("code-stream-text");
+
+                const interval = setInterval(() => {
+                    progress += 2;
+                    progressBar.style.width = progress + "%";
+                    codeStream.innerText = "0x" + Math.random().toString(16).substr(2, 8).toUpperCase() + "... PARSING CLASSIFIED PACKETS [" + progress + "%]";
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        stopMorseCodeAudio();
+                        decryptScreen.style.display = "none";
+                        
+                        // فتح النظام ونطق Welcome to CIA SYSTEM
+                        openMainSystem(user);
+                        playWelcomeVoice();
+                    }
+                }, 100); // 100ms * 50 = 5000ms (5 ثوانٍ)
+
             } else {
                 errorMsg.style.display = "block";
             }
         }
 
-        function openMainSystem(user, isAnimated) {
+        function openMainSystem(user) {
             currentUser = user;
             document.getElementById("login-screen").style.display = "none";
             document.getElementById("main-system").style.display = "block";
@@ -1343,9 +1443,7 @@
 
         function logout() {
             localStorage.removeItem("active_cia_user");
-            const loginCard = document.getElementById("login-screen");
-            loginCard.classList.remove("login-success-anim");
-            loginCard.style.display = "block";
+            document.getElementById("login-screen").style.display = "block";
             document.getElementById("main-system").style.display = "none";
         }
 
