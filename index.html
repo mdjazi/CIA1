@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIA SYSTEM  | نظام التحكم والاستخبارات</title>
+    <title>CIA SYSTEM v7.0 | نظام التحكم والاستخبارات</title>
     <style>
         :root {
             --bg-color: #05080c;
@@ -31,7 +31,6 @@
             align-items: center;
             padding: 20px;
         }
-        /* === 1. شاشة تسجيل الدخول === */
         .login-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -122,9 +121,7 @@
             margin-top: 10px;
             transition: 0.2s;
         }
-        .btn-login:hover {
-            opacity: 0.9;
-        }
+        .btn-login:hover { opacity: 0.9; }
         .error-msg {
             color: var(--danger-color);
             font-size: 12px;
@@ -137,7 +134,6 @@
             color: var(--gold-color);
             margin-top: 10px;
         }
-        /* === 2. النظام الداخلي === */
         #main-system {
             display: none;
             width: 100%;
@@ -173,11 +169,7 @@
             background: var(--accent-color);
             color: #fff;
         }
-        .badge-leader { 
-            background: var(--gold-color); 
-            color: #000; 
-        }
-        /* شبكة المجلدات */
+        .badge-leader { background: var(--gold-color); color: #000; }
         .folder-grid-panel {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -197,9 +189,7 @@
             gap: 15px;
             margin-top: 15px;
         }
-        @media (max-width: 768px) {
-            .folder-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .folder-grid { grid-template-columns: 1fr; } }
         .folder-card {
             background: #04060a;
             border: 1px solid var(--border-color);
@@ -221,10 +211,7 @@
             margin-bottom: 4px;
             letter-spacing: 1px;
         }
-        .folder-card small {
-            color: var(--text-muted);
-            font-size: 11px;
-        }
+        .folder-card small { color: var(--text-muted); font-size: 11px; }
         .folder-card .open-lbl {
             position: absolute;
             bottom: 10px;
@@ -233,7 +220,6 @@
             color: #475569;
             letter-spacing: 1px;
         }
-        /* أقسام العمل */
         .workspace-panel {
             display: none;
             background: var(--card-bg);
@@ -253,27 +239,20 @@
             font-weight: bold;
             font-size: 12px;
         }
-        .btn-back:hover {
-            border-color: var(--gold-color);
-            color: var(--gold-color);
-        }
-        /* أدوات التشفير */
+        .btn-back:hover { border-color: var(--gold-color); color: var(--gold-color); }
         .crypto-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-bottom: 20px;
         }
-        @media (max-width: 768px) {
-            .crypto-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .crypto-grid { grid-template-columns: 1fr; } }
         .crypto-box {
             background: #04060a;
             border: 1px solid var(--border-color);
             padding: 15px;
             border-radius: 6px;
         }
-        /* سجل الميدان */
         .log-box {
             background: #000;
             border: 1px solid var(--border-color);
@@ -287,12 +266,7 @@
             max-height: 180px;
             overflow-y: auto;
         }
-        .log-title {
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        /* بطاقات المطلوبين والبيانات */
+        .log-title { color: var(--accent-color); font-weight: bold; margin-bottom: 8px; }
         .data-card {
             border: 1px solid var(--border-color);
             background: #04060a;
@@ -301,92 +275,22 @@
             margin-bottom: 12px;
             position: relative;
         }
-        .wanted-card {
-            border-color: var(--danger-color);
-            background: rgba(217, 4, 41, 0.05);
-        }
-        .badge-danger {
-            background: var(--danger-color);
-            color: #fff;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 3px;
-        }
-        .action-btns {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            display: flex;
-            gap: 5px;
-        }
-        .btn-del-item {
-            background: var(--danger-color);
-            color: #fff;
-            border: none;
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 10px;
-            font-weight: bold;
-        }
-        .btn-edit-item {
-            background: var(--gold-color);
-            color: #000;
-            border: none;
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 10px;
-            font-weight: bold;
-        }
-        /* الجداول */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 13px;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            text-align: right;
-        }
-        th {
-            background: #04060a;
-            color: var(--gold-color);
-        }
-        .leader-panel {
-            border: 1px solid var(--gold-color);
-            background: #090e15;
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .user-list-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #04060a;
-            padding: 12px 15px;
-            margin-top: 10px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            font-size: 13px;
-        }
-        .img-preview {
-            max-width: 100%;
-            max-height: 200px;
-            border-radius: 5px;
-            margin-top: 10px;
-            border: 1px solid var(--border-color);
-        }
+        .wanted-card { border-color: var(--danger-color); background: rgba(217, 4, 41, 0.05); }
+        .badge-danger { background: var(--danger-color); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 3px; }
+        .action-btns { position: absolute; top: 10px; left: 10px; display: flex; gap: 5px; }
+        .btn-del-item { background: var(--danger-color); color: #fff; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: bold; }
+        .btn-edit-item { background: var(--gold-color); color: #000; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
+        th, td { padding: 10px; border: 1px solid var(--border-color); text-align: right; }
+        th { background: #04060a; color: var(--gold-color); }
+        .leader-panel { border: 1px solid var(--gold-color); background: #090e15; padding: 25px; border-radius: 8px; margin-bottom: 20px; }
+        .user-list-item { display: flex; justify-content: space-between; align-items: center; background: #04060a; padding: 12px 15px; margin-top: 10px; border-radius: 6px; border: 1px solid var(--border-color); font-size: 13px; }
+        .img-preview { max-width: 100%; max-height: 200px; border-radius: 5px; margin-top: 10px; border: 1px solid var(--border-color); }
     </style>
 </head>
 <body>
-    <!-- 1. شاشة تسجيل الدخول -->
     <div class="login-card" id="login-screen">
         <div class="subtitle-top">CIA • FEDERAL DATA TERMINAL</div>
-        
         <div class="logo-container">
             <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Seal_of_the_Central_Intelligence_Agency.svg" alt="CIA Emblem">
         </div>
@@ -394,27 +298,25 @@
         <div class="agency-name">CENTRAL INTELLIGENCE AGENCY</div>
         <div class="input-group">
             <label>معرف الوكيل / اسم المستخدم (Username)</label>
-            <input type="text" id="login-username" placeholder="Name" autocomplete="off">
+            <input type="text" id="login-username" placeholder="مثال: Karlos" autocomplete="off">
         </div>
         <div class="input-group">
             <label>كلمة المرور التشفيرية (Passcode)</label>
-            <input type="password" id="login-password" placeholder="•••••" autocomplete="new-password">
+            <input type="password" id="login-password" placeholder="••••••••" autocomplete="new-password">
         </div>
         <div class="input-group">
             <label>رمز الأمان التشغيلي (PIN Code)</label>
             <input type="password" id="login-pin" placeholder="••••" autocomplete="off">
         </div>
         <button class="btn-login" onclick="login()">تسجيل الدخول للمنظومة الفدرالية</button>
-        <div class="sync-status" id="loading-status">🔄 جاري الاتصال بالفايربيس...</div>
+        <div class="sync-status" id="loading-status">🔄 جاري الاتصال بالسحابة...</div>
         <div class="error-msg" id="error-msg">⚠️ خطأ: اسم المستخدم، كلمة السر، أو الرمز غير صحيح!</div>
     </div>
-    <!-- 2. النظام الداخلي -->
+
     <div id="main-system">
-        
-        <!-- الهيدر العلوي -->
         <div class="header-system">
             <div>
-                <h3 style="margin:0; color:var(--gold-color); font-size:18px;">🛡️ CIA SYSTEM  | نظام التحكم والاستخبارات</h3>
+                <h3 style="margin:0; color:var(--gold-color); font-size:18px;">🛡️ CIA SYSTEM v7.0 | نظام التحكم والاستخبارات</h3>
                 <small style="color:#94a3b8;">
                     العضو: <span id="current-user-display" style="color:var(--accent-color); font-weight:bold;">Mutleq</span> 
                     | الرتبة: <span id="current-role-display" class="badge">CID Member</span>
@@ -422,7 +324,7 @@
             </div>
             <button class="btn-logout" onclick="logout()">تسجيل الخروج</button>
         </div>
-        <!-- شبكة المجلدات الستة -->
+
         <div class="folder-grid-panel" id="folderHome">
             <div class="grid-title">سطح مكتب نظام CIA</div>
             <small style="color:var(--text-muted)">اختر مجلداً لفتح القسم الخاص به</small>
@@ -462,11 +364,10 @@
                 BY KARLOS SEIFEDDINE | CIA FEDERAL DATA TERMINAL
             </div>
         </div>
-        <!-- لوحة إدارة الحسابات للـ DIRECTOR -->
+
         <div id="leader-section" class="leader-panel" style="display: none;">
             <h3 style="color:var(--gold-color); margin-top:0;">👑 مركز إدارة التراخيص والسرية</h3>
             <p style="font-size:12px; color:#94a3b8; margin-bottom: 15px;">إنشاء وتحديث الحسابات بالسحابة أونلاين:</p>
-            
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
                 <div class="input-group"><label>اسم الوكيل</label><input type="text" id="new-username" placeholder="Username..."></div>
                 <div class="input-group"><label>المعرف (Badge ID)</label><input type="text" id="new-id" placeholder="CIA-709"></div>
@@ -476,11 +377,10 @@
             <button class="btn-login" style="background:var(--success-color); font-size: 13px;" onclick="createAccount()">➕ إضافة الحساب أونلاين</button>
             <div id="users-container" style="margin-top:15px;"></div>
         </div>
-        <!-- 1. قسم التقارير -->
+
         <div class="workspace-panel" id="reportsSection">
             <button class="btn-back" onclick="showHome()">← العودة للرئيسية</button>
             <h3 style="color:var(--gold-color); margin-bottom: 15px;">📝 قسم التقارير والمذكرات</h3>
-            
             <div class="input-group">
                 <input type="text" id="reportSearch" class="search-box" placeholder="🔍 بحث في قاعدة بيانات التقارير..." oninput="renderReports()">
             </div>
@@ -494,10 +394,9 @@
             <div id="reports-list"></div>
             <div class="log-box" id="reports-log"></div>
         </div>
-        <!-- 2. قسم المطلوبين + أدوات التشفير -->
+
         <div class="workspace-panel" id="wantedSection">
             <button class="btn-back" onclick="showHome()">← العودة للرئيسية</button>
-            
             <div class="crypto-grid">
                 <div class="crypto-box">
                     <label style="color:var(--accent-color); font-weight:bold; font-size:12px;">🔒 تشفير رسالة</label>
@@ -512,7 +411,6 @@
             </div>
             <div style="margin-bottom: 20px; font-size:12px;">النتيجة الحالية: <b id="cryptoResult" style="color:var(--success-color);">-</b></div>
             <h3 style="color:var(--gold-color); margin-bottom: 15px;">📜 قائمة المطلوبين للعدالة (WANTED LIST)</h3>
-            
             <div class="input-group">
                 <input type="text" id="wantedSearch" class="search-box" placeholder="🔍 بحث في داتابيس المطلوبين..." oninput="renderWanted()">
             </div>
@@ -524,11 +422,10 @@
             </div>
             <div id="wanted-list" style="display:flex; gap:15px; flex-wrap:wrap;"></div>
         </div>
-        <!-- 3. قسم السجل الجنائي -->
+
         <div class="workspace-panel" id="recordsSection">
             <button class="btn-back" onclick="showHome()">← العودة للرئيسية</button>
             <h3 style="color:var(--gold-color); margin-bottom: 15px;">📂 السجل الجنائي للمواطنين</h3>
-            
             <div class="input-group">
                 <input type="text" id="recordsSearch" class="search-box" placeholder="🔍 بحث في السجل الجنائي للأشخاص..." oninput="renderRecords()">
             </div>
@@ -540,11 +437,10 @@
             </div>
             <div id="records-list"></div>
         </div>
-        <!-- 4. قسم الاستخبارات والمخططات -->
+
         <div class="workspace-panel" id="intelligenceSection">
             <button class="btn-back" onclick="showHome()">← العودة للرئيسية</button>
             <h3 style="color:var(--gold-color); margin-bottom: 15px;">GANG INTELLIGENCE 🕵️‍♂️</h3>
-            
             <div class="input-group">
                 <input type="text" id="gangsSearch" class="search-box" placeholder="🔍 بحث في مخططات الاستخبارات والعصابات..." oninput="renderGangs()">
             </div>
@@ -555,13 +451,13 @@
             </div>
             <div id="gangs-list"></div>
         </div>
-        <!-- 5. قسم القضايا -->
+
         <div class="workspace-panel" id="casesSection">
             <button class="btn-back" onclick="showHome()">← العودة للرئيسية</button>
             <h3 style="color:var(--gold-color);">⚖️ القضايا والعقوبات</h3>
             <p style="font-size:12px; color:#94a3b8; margin-top:10px;">جميع بيانات القضايا يتم إدارتها وتحديثها عبر التقارير والسجل الجنائي التفاعلي.</p>
         </div>
-        <!-- 6. قسم الأعضاء والمتصلون -->
+
         <div class="workspace-panel" id="usersSection">
             <button class="btn-back" onclick="showHome()">← العودة للرئيسية</button>
             <h3 style="color:var(--gold-color);">👥 قائمة الأعضاء المسجلين بالمنظومة</h3>
@@ -581,76 +477,69 @@
         </div>
     </div>
 
-    <!-- 3. البرمجة والتكامل السحابي عبر Firebase Firestore -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-      import { 
-        getFirestore, 
-        doc, 
-        setDoc, 
-        getDoc, 
-        onSnapshot 
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyA-beJLIumvemTm53OjjIPFC7cvYMGrNcc",
-        authDomain: "cia1-d5a55.firebaseapp.com",
-        projectId: "cia1-d5a55",
-        storageBucket: "cia1-d5a55.firebasestorage.app",
-        messagingSenderId: "415185058248",
-        appId: "1:415185058248:web:92b9145c4562101491e8fd",
-        measurementId: "G-JK7PBVJ2PY"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      let defaultDatabase = {
-          users: {
-              "Karlos": { password: "admin", pin: "0000", id: "CIA-001", role: "DIRECTOR" },
-            
-              "Mutleq": { password: "123", pin: "1234", id: "CIA-102", role: "CID Member" }
-          },
-          reports: [],
-          wanted: [
-              { id: 1, name: "MARK", risk: "خطر جداً", crime: "التهمة مطلوب وبشكل خطر على القطاعات الفدرالية..." }
-          ],
-          records: [],
-          gangs: [],
-          logs: ["[SYSTEM READY]: تم الاتصال بالسحابة الفدرالية."]
-      };
-
-      window.globalDatabase = defaultDatabase;
-      window.currentUser = "";
-
-      // حفظ السحابة عبر الفايربيس
-      window.saveCloudData = async function() {
-          try {
-              await setDoc(doc(db, "ciaSystem", "mainData"), { payload: JSON.stringify(window.globalDatabase) });
-              console.log("تم الحفظ في الفايربيس بنجاح");
-          } catch (e) {
-              console.error("خطأ في حفظ الفايربيس: ", e);
-          }
-          window.renderAllData();
-      };
-
-      // المزامنة التلقائية واللحظية بين الدول
-      onSnapshot(doc(db, "ciaSystem", "mainData"), (docSnap) => {
-          if (docSnap.exists()) {
-              const dataStr = docSnap.data().payload;
-              if (dataStr) {
-                  window.globalDatabase = JSON.parse(dataStr);
-                  document.getElementById("loading-status").innerText = "✅ متصل بالمنظومة الفدرالية (Firebase Live)";
-                  window.renderAllData();
-              }
-          } else {
-              // إذا أول مرة، نرفع البيانات الافتراضية
-              window.saveCloudData();
-          }
-      });
-    </script>
-
     <script>
+        // غيّر المفاتيح هنا للمفاتيح الخاصة بك
+        const BIN_ID = "ضع_هنا_BIN_ID_الخاص_بك"; 
+        const API_KEY = "ضع_هنا_API_KEY_بدون_نقطة_في_النهاية"; 
+
+        let defaultDatabase = {
+            users: {
+                "Karlos": { password: "admin", pin: "0000", id: "CIA-001", role: "DIRECTOR" },
+                "Mutleq": { password: "123", pin: "1234", id: "CIA-102", role: "CID Member" }
+            },
+            reports: [],
+            wanted: [],
+            records: [],
+            gangs: [],
+            logs: ["[SYSTEM READY]: تم الاتصال بالسحابة الفدرالية."]
+        };
+
+        let globalDatabase = defaultDatabase;
+        let currentUser = "";
+
+        // جلب البيانات من السحابة اونلاين
+        async function fetchCloudData() {
+            try {
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest?nocache=${Date.now()}`, {
+                    headers: { "X-Master-Key": API_KEY }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.record && data.record.users) {
+                        globalDatabase = data.record;
+                        renderAllData();
+                        const statusElem = document.getElementById("loading-status");
+                        if(statusElem) statusElem.innerText = "✅ متصل بالمنظومة الفدرالية ومُزامن بنجاح";
+                    }
+                } else {
+                    console.error("فشل في جلب البيانات من السحابة:", res.status);
+                }
+            } catch (e) {
+                console.error("خطأ شبكة أثناء المزامنة:", e);
+            }
+        }
+
+        // حفظ كل شيء للسحابة أونلاين
+        async function saveCloudData() {
+            try {
+                const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+                    method: "PUT",
+                    headers: { 
+                        "Content-Type": "application/json", 
+                        "X-Master-Key": API_KEY 
+                    },
+                    body: JSON.stringify(globalDatabase)
+                });
+                if(res.ok) {
+                    renderAllData();
+                } else {
+                    alert("⚠️ فشل الحفظ في السحابة! تحقق من API_KEY أو BIN_ID");
+                }
+            } catch (e) { 
+                alert("⚠️ خطأ في الاتصال أثناء حفظ البيانات!"); 
+            }
+        }
+
         function checkAutoLogin() {
             const savedUser = localStorage.getItem("active_cia_user");
             if (savedUser && globalDatabase.users[savedUser]) {
@@ -700,7 +589,6 @@
             renderLogs();
         }
 
-        /* 1. التقارير */
         async function addReport() {
             const title = document.getElementById("reportTitle").value.trim();
             const details = document.getElementById("reportDetails").value.trim();
@@ -751,8 +639,8 @@
 
         function renderReports() {
             const list = document.getElementById("reports-list");
-            const q = (document.getElementById("reportSearch")?.value || "").toLowerCase();
             if (!list) return;
+            const q = (document.getElementById("reportSearch")?.value || "").toLowerCase();
             list.innerHTML = "";
             globalDatabase.reports.filter(r => 
                 (r.title && r.title.toLowerCase().includes(q)) || 
@@ -776,7 +664,6 @@
             });
         }
 
-        /* 2. المطلوبون */
         async function addWanted() {
             const name = document.getElementById("wantedName").value.trim();
             const risk = document.getElementById("wantedRisk").value.trim();
@@ -817,8 +704,8 @@
 
         function renderWanted() {
             const list = document.getElementById("wanted-list");
+            if(!list) return;
             const q = (document.getElementById("wantedSearch")?.value || "").toLowerCase();
-            if (!list) return;
             list.innerHTML = "";
             globalDatabase.wanted.filter(w => 
                 (w.name && w.name.toLowerCase().includes(q)) || 
@@ -842,7 +729,6 @@
             });
         }
 
-        /* 3. السجل الجنائي */
         async function addRecord() {
             const name = document.getElementById("recName").value.trim();
             const cid = document.getElementById("recId").value.trim();
@@ -881,8 +767,8 @@
 
         function renderRecords() {
             const list = document.getElementById("records-list");
+            if(!list) return;
             const q = (document.getElementById("recordsSearch")?.value || "").toLowerCase();
-            if (!list) return;
             list.innerHTML = "";
             globalDatabase.records.filter(r => 
                 (r.name && r.name.toLowerCase().includes(q)) || 
@@ -903,7 +789,6 @@
             });
         }
 
-        /* 4. مخططات العصابات */
         async function addGang() {
             const name = document.getElementById("gangName").value.trim();
             const details = document.getElementById("gangDetails").value.trim();
@@ -937,8 +822,8 @@
 
         function renderGangs() {
             const list = document.getElementById("gangs-list");
+            if(!list) return;
             const q = (document.getElementById("gangsSearch")?.value || "").toLowerCase();
-            if (!list) return;
             list.innerHTML = "";
             globalDatabase.gangs.filter(g => 
                 (g.name && g.name.toLowerCase().includes(q)) || 
@@ -958,7 +843,6 @@
             });
         }
 
-        /* إدارة الحسابات والأعضاء */
         async function createAccount() {
             const user = document.getElementById("new-username").value.trim();
             const id = document.getElementById("new-id").value.trim();
@@ -968,7 +852,7 @@
             globalDatabase.users[user] = { password: pass, pin: pin, id: id, role: "SPECIAL AGENT" };
             addLog(`تم إنشاء حساب جديد لـ: ${user}`);
             await saveCloudData();
-            alert(`تم إضافة الحساب (${user}) أونلاين بنجاح!`);
+            alert(`تم إضافة الحساب (${user}) أونلاين!`);
         }
 
         async function deleteAccount(username) {
@@ -988,13 +872,11 @@
             for (let user in globalDatabase.users) {
                 const u = globalDatabase.users[user];
                 if (user.toLowerCase().includes(q) || u.id.toLowerCase().includes(q) || u.role.toLowerCase().includes(q)) {
-                    // جدول الأعضاء
                     if (tbody) {
                         const tr = document.createElement("tr");
                         tr.innerHTML = `<td>${user}</td><td>${u.id}</td><td>${u.role}</td>`;
                         tbody.appendChild(tr);
                     }
-                    // بطاقات الإدارة
                     if (container) {
                         const div = document.createElement("div");
                         div.className = "user-list-item";
@@ -1011,7 +893,6 @@
             }
         }
 
-        /* السجل الميداني (Log) */
         function addLog(text) {
             const time = new Date().toLocaleTimeString('ar-EG');
             globalDatabase.logs.unshift(`[${time}] ${text}`);
@@ -1026,7 +907,6 @@
             }
         }
 
-        /* التنقل بين الشاشات */
         function showHome() {
             document.getElementById("folderHome").style.display = "block";
             const panels = document.querySelectorAll('.workspace-panel');
@@ -1039,7 +919,6 @@
             if (target) target.style.display = "block";
         }
 
-        /* التشفير وفك التشفير */
         function encryptMsg() {
             const val = document.getElementById("plainText").value.trim();
             if (!val) return;
@@ -1059,6 +938,14 @@
             document.getElementById("login-screen").style.display = "block";
             document.getElementById("main-system").style.display = "none";
         }
+
+        // جلب البيانات فور تحميل الصفحة
+        fetchCloudData().then(() => {
+            checkAutoLogin();
+        });
+
+        // مزامنة تلقائية كل 5 ثوانٍ لجلب التقارير والتعديلات الجديدة من الأجهزة الأخرى
+        setInterval(fetchCloudData, 5000);
     </script>
 </body>
 </html>
