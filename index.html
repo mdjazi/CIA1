@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIA SYSTEM v7.0 | نظام التحكم والاستخبارات</title>
+    <title>CIA SYSTEM | نظام التحكم والاستخبارات</title>
     <style>
         :root {
             --bg-color: #05080c;
@@ -298,11 +298,11 @@
         <div class="agency-name">CENTRAL INTELLIGENCE AGENCY</div>
         <div class="input-group">
             <label>معرف الوكيل / اسم المستخدم (Username)</label>
-            <input type="text" id="login-username" placeholder="مثال: Karlos" autocomplete="off">
+            <input type="text" id="login-username" placeholder="Name" autocomplete="off">
         </div>
         <div class="input-group">
             <label>كلمة المرور التشفيرية (Passcode)</label>
-            <input type="password" id="login-password" placeholder="••••••••" autocomplete="new-password">
+            <input type="password" id="login-password" placeholder="•••••" autocomplete="new-password">
         </div>
         <div class="input-group">
             <label>رمز الأمان التشغيلي (PIN Code)</label>
@@ -316,7 +316,7 @@
     <div id="main-system">
         <div class="header-system">
             <div>
-                <h3 style="margin:0; color:var(--gold-color); font-size:18px;">🛡️ CIA SYSTEM v7.0 | نظام التحكم والاستخبارات</h3>
+                <h3 style="margin:0; color:var(--gold-color); font-size:18px;">🛡️ CIA SYSTEM  | نظام التحكم والاستخبارات</h3>
                 <small style="color:#94a3b8;">
                     العضو: <span id="current-user-display" style="color:var(--accent-color); font-weight:bold;">Mutleq</span> 
                     | الرتبة: <span id="current-role-display" class="badge">CID Member</span>
@@ -350,8 +350,8 @@
                     <span class="open-lbl">OPEN FOLDER →</span>
                 </div>
                 <div class="folder-card" onclick="openSection('casesSection')">
-                    <b>CASES 📁</b>
-                    <small>القضايا والعقوبات</small>
+                    <b> Decryption 📁 </b>
+                    <small>   🔓 تشفير الرسائل 🔒 وفك التشفير    </small>
                     <span class="open-lbl">OPEN FOLDER →</span>
                 </div>
                 <div class="folder-card" onclick="openSection('usersSection')">
@@ -369,10 +369,10 @@
             <h3 style="color:var(--gold-color); margin-top:0;">👑 مركز إدارة التراخيص والسرية</h3>
             <p style="font-size:12px; color:#94a3b8; margin-bottom: 15px;">إنشاء وتحديث الحسابات بالسحابة أونلاين:</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-                <div class="input-group"><label>اسم الوكيل</label><input type="text" id="new-username" placeholder="Username..."></div>
+                <div class="input-group"><label>اسم الوكيل</label><input type="text" id="new-username" placeholder="Username"></div>
                 <div class="input-group"><label>المعرف (Badge ID)</label><input type="text" id="new-id" placeholder="CIA-709"></div>
-                <div class="input-group"><label>كلمة المرور</label><input type="text" id="new-password" placeholder="Passcode..."></div>
-                <div class="input-group"><label>رمز PIN</label><input type="text" id="new-pin" placeholder="PIN..."></div>
+                <div class="input-group"><label>كلمة المرور</label><input type="text" id="new-password" placeholder="Passcode"></div>
+                <div class="input-group"><label>رمز PIN</label><input type="text" id="new-pin" placeholder="PIN"></div>
             </div>
             <button class="btn-login" style="background:var(--success-color); font-size: 13px;" onclick="createAccount()">➕ إضافة الحساب أونلاين</button>
             <div id="users-container" style="margin-top:15px;"></div>
@@ -384,8 +384,8 @@
             <div class="input-group">
                 <input type="text" id="reportSearch" class="search-box" placeholder="🔍 بحث في قاعدة بيانات التقارير..." oninput="renderReports()">
             </div>
-            <div class="input-group"><label>عنوان التقرير</label><input type="text" id="reportTitle" placeholder="عنوان التقرير..."></div>
-            <div class="input-group"><label>تفاصيل التقرير</label><textarea id="reportDetails" rows="3" placeholder="تفاصيل التقرير..."></textarea></div>
+            <div class="input-group"><label>عنوان التقرير</label><input type="text" id="reportTitle" placeholder="عنوان التقرير"></div>
+            <div class="input-group"><label>تفاصيل التقرير</label><textarea id="reportDetails" rows="3" placeholder="تفاصيل التقرير"></textarea></div>
             <div class="input-group"><label>Citizen ID المرتبط بالتقرير</label><input type="text" id="reportCitizen" placeholder="مثال: CIA-102"></div>
             <div class="input-group"><label>رابط صورة كدليل (اختياري)</label><input type="text" id="reportImage" placeholder="https://example.com/image.jpg"></div>
             <div class="input-group"><label>رابط فيديو كدليل (اختياري)</label><input type="text" id="reportVideo" placeholder="https://example.com/video.mp4"></div>
@@ -400,24 +400,24 @@
             <div class="crypto-grid">
                 <div class="crypto-box">
                     <label style="color:var(--accent-color); font-weight:bold; font-size:12px;">🔒 تشفير رسالة</label>
-                    <input type="text" id="plainText" placeholder="أدخل النص..." style="margin-top:5px;">
+                    <input type="text" id="plainText" placeholder="أدخل النص" style="margin-top:5px;">
                     <button class="btn-login" style="margin-top:8px; background:var(--accent-color);" onclick="encryptMsg()">تشفير</button>
                 </div>
                 <div class="crypto-box">
                     <label style="color:var(--gold-color); font-weight:bold; font-size:12px;">🔓 فك التشفير</label>
-                    <input type="text" id="cipherText" placeholder="أدخل الكود..." style="margin-top:5px;">
+                    <input type="text" id="cipherText" placeholder="أدخل الكود" style="margin-top:5px;">
                     <button class="btn-login" style="margin-top:8px; background:var(--gold-color); color:#000;" onclick="decryptMsg()">فك التشفير</button>
                 </div>
             </div>
             <div style="margin-bottom: 20px; font-size:12px;">النتيجة الحالية: <b id="cryptoResult" style="color:var(--success-color);">-</b></div>
             <h3 style="color:var(--gold-color); margin-bottom: 15px;">📜 قائمة المطلوبين للعدالة (WANTED LIST)</h3>
             <div class="input-group">
-                <input type="text" id="wantedSearch" class="search-box" placeholder="🔍 بحث في داتابيس المطلوبين..." oninput="renderWanted()">
+                <input type="text" id="wantedSearch" class="search-box" placeholder="🔍 بحث في داتابيس المطلوبين" oninput="renderWanted()">
             </div>
             <div style="background:#04060a; padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid var(--border-color);">
-                <div class="input-group"><label>اسم المطلوب</label><input type="text" id="wantedName" placeholder="Name..."></div>
+                <div class="input-group"><label>اسم المطلوب</label><input type="text" id="wantedName" placeholder="Name"></div>
                 <div class="input-group"><label>مستوى الخطورة</label><input type="text" id="wantedRisk" placeholder="مثال: خطر جداً"></div>
-                <div class="input-group"><label>التهم التفصيلية</label><textarea id="wantedCrime" rows="2" placeholder="التهمة..."></textarea></div>
+                <div class="input-group"><label>التهم التفصيلية</label><textarea id="wantedCrime" rows="2" placeholder="التهمة"></textarea></div>
                 <button class="btn-login" style="background:var(--danger-color);" onclick="addWanted()">+ إضافة مطلوب إلى القائمة</button>
             </div>
             <div id="wanted-list" style="display:flex; gap:15px; flex-wrap:wrap;"></div>
@@ -427,12 +427,12 @@
             <button class="btn-back" onclick="showHome()">← العودة للرئيسية</button>
             <h3 style="color:var(--gold-color); margin-bottom: 15px;">📂 السجل الجنائي للمواطنين</h3>
             <div class="input-group">
-                <input type="text" id="recordsSearch" class="search-box" placeholder="🔍 بحث في السجل الجنائي للأشخاص..." oninput="renderRecords()">
+                <input type="text" id="recordsSearch" class="search-box" placeholder="🔍 بحث في السجل الجنائي للأشخاص" oninput="renderRecords()">
             </div>
             <div style="background:#04060a; padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid var(--border-color);">
                 <div class="input-group"><label>اسم المواطن</label><input type="text" id="recName" placeholder="John Doe"></div>
                 <div class="input-group"><label>Citizen ID</label><input type="text" id="recId" placeholder="CIA-102"></div>
-                <div class="input-group"><label>سجل الملاحظات والقضايا</label><textarea id="recNotes" rows="2" placeholder="الملاحظات..."></textarea></div>
+                <div class="input-group"><label>سجل الملاحظات والقضايا</label><textarea id="recNotes" rows="2" placeholder="الملاحظات"></textarea></div>
                 <button class="btn-login" style="background:var(--gold-color); color:#000;" onclick="addRecord()">+ إضافة ملف جديد للسجل</button>
             </div>
             <div id="records-list"></div>
@@ -442,11 +442,11 @@
             <button class="btn-back" onclick="showHome()">← العودة للرئيسية</button>
             <h3 style="color:var(--gold-color); margin-bottom: 15px;">GANG INTELLIGENCE 🕵️‍♂️</h3>
             <div class="input-group">
-                <input type="text" id="gangsSearch" class="search-box" placeholder="🔍 بحث في مخططات الاستخبارات والعصابات..." oninput="renderGangs()">
+                <input type="text" id="gangsSearch" class="search-box" placeholder="🔍 بحث في مخططات الاستخبارات والعصابات" oninput="renderGangs()">
             </div>
             <div style="background:#04060a; padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid var(--border-color);">
-                <div class="input-group"><label>اسم العصابة / التنظيم</label><input type="text" id="gangName" placeholder="Gang Name..."></div>
-                <div class="input-group"><label>تفاصيل المخطط والارتباطات</label><textarea id="gangDetails" rows="2" placeholder="التفاصيل..."></textarea></div>
+                <div class="input-group"><label>اسم العصابة / التنظيم</label><input type="text" id="gangName" placeholder="Gang Name"></div>
+                <div class="input-group"><label>تفاصيل المخطط والارتباطات</label><textarea id="gangDetails" rows="2" placeholder="التفاصيل"></textarea></div>
                 <button class="btn-login" style="background:var(--gold-color); color:#000;" onclick="addGang()">+ إنشاء مخطط عصابة جديد</button>
             </div>
             <div id="gangs-list"></div>
@@ -462,7 +462,7 @@
             <button class="btn-back" onclick="showHome()">← العودة للرئيسية</button>
             <h3 style="color:var(--gold-color);">👥 قائمة الأعضاء المسجلين بالمنظومة</h3>
             <div class="input-group">
-                <input type="text" id="usersSearch" class="search-box" placeholder="🔍 بحث في قائمة الأعضاء..." oninput="renderUsers()">
+                <input type="text" id="usersSearch" class="search-box" placeholder="🔍 بحث في قائمة الأعضاء" oninput="renderUsers()">
             </div>
             <table>
                 <thead>
@@ -484,7 +484,7 @@
 
         let defaultDatabase = {
             users: {
-                "Karlos": { password: "admin", pin: "0000", id: "CIA-001", role: "DIRECTOR" },
+                "Majed": { password: "1967", pin: "0000", id: "CIA-001", role: "DIRECTOR" },
                 "Mutleq": { password: "123", pin: "1234", id: "CIA-102", role: "CID Member" }
             },
             reports: [],
