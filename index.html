@@ -605,6 +605,9 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Seal_of_the_Central_Intelligence_Agency.svg" alt="CIA Logo">
     </div>
 
+    <!-- عنصر الصوت المرفق لفك التشفير -->
+    <audio id="hackingAudio" src="https://actions.google.com/sounds/v1/science_fiction/teleporting_sound.ogg" preload="auto" loop></audio>
+
     <!-- شاشة فك التشفير لمدة 5 ثوانٍ -->
     <div id="decryption-screen">
         <div class="decrypt-box">
@@ -891,46 +894,32 @@
         }
         setInterval(drawMatrix, 35);
 
-        /* توليد صوت شفرة مورس الحقيقي لنظام الاستخبارات */
-        let morseAudioInterval = null;
-        function startMorseCodeAudio() {
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                
-                morseAudioInterval = setInterval(() => {
-                    const osc = audioCtx.createOscillator();
-                    const gain = audioCtx.createGain();
-                    
-                    osc.type = "sine";
-                    osc.frequency.setValueAtTime(750 + (Math.random() * 200), audioCtx.currentTime); // تردد مورس
-                    
-                    const duration = Math.random() > 0.5 ? 0.06 : 0.18; // Dot or Dash
-                    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-                    
-                    osc.connect(gain);
-                    gain.connect(audioCtx.destination);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + duration);
-                }, 120);
-            } catch(e) { console.log(e); }
-        }
-
-        function stopMorseCodeAudio() {
-            if (morseAudioInterval) {
-                clearInterval(morseAudioInterval);
-                morseAudioInterval = null;
+        /* تشغيل صوت الهكر والتشفير المخصص لمدة 5 ثوانٍ */
+        function startHackingAudio() {
+            const audio = document.getElementById("hackingAudio");
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(e => console.log("Audio play blocked by user interaction"));
             }
         }
 
-        /* الصوت البشري الواقعي جداً مع فلتر اللاسلكي الفدرالي */
+        function stopHackingAudio() {
+            const audio = document.getElementById("hackingAudio");
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        }
+
+        /* الصوت البشري بدون نقاط في الكلمة "Welcome to CIA SYSTEM" */
         function playWelcomeVoice() {
             try {
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel();
-                    const utterance = new SpeechSynthesisUtterance("Welcome to C.I.A System");
+                    // نطق العبارة كـ "CIA" متصلة ودون نقاط
+                    const utterance = new SpeechSynthesisUtterance("Welcome to CIA SYSTEM");
                     utterance.lang = "en-US";
-                    utterance.pitch = 0.35; // صوت غليظ ورصين
+                    utterance.pitch = 0.35; // صوت رجالي ضخم وعميق جداً
                     utterance.rate = 0.82;
 
                     const voices = window.speechSynthesis.getVoices();
@@ -941,7 +930,7 @@
                     window.speechSynthesis.speak(utterance);
                 }
 
-                // طقطقة أجهزة اللاسلكي للتوثيق
+                // طقطقة راديو خفيفة للتأكيد
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const bufferSize = audioCtx.sampleRate * 0.12;
                 const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
@@ -1030,12 +1019,12 @@
                 errorMsg.style.display = "none";
                 localStorage.setItem("active_cia_user", user);
                 
-                // بدء مرحلة فك التشفير لمدة 5 ثوانٍ مع صوت مورس
+                // بدء مرحلة فك التشفير مع تشغيل صوت الهكر المخصص
                 document.getElementById("login-screen").style.display = "none";
                 const decryptScreen = document.getElementById("decryption-screen");
                 decryptScreen.style.display = "flex";
                 
-                startMorseCodeAudio();
+                startHackingAudio();
 
                 let progress = 0;
                 const progressBar = document.getElementById("decrypt-progress");
@@ -1044,18 +1033,18 @@
                 const interval = setInterval(() => {
                     progress += 2;
                     progressBar.style.width = progress + "%";
-                    codeStream.innerText = "0x" + Math.random().toString(16).substr(2, 8).toUpperCase() + "... PARSING CLASSIFIED PACKETS [" + progress + "%]";
+                    codeStream.innerText = "0x" + Math.random().toString(16).substr(2, 8).toUpperCase() + "... DECRYPTING HACKING SOUND PACKETS [" + progress + "%]";
                     
                     if (progress >= 100) {
                         clearInterval(interval);
-                        stopMorseCodeAudio();
+                        stopHackingAudio();
                         decryptScreen.style.display = "none";
                         
-                        // فتح النظام ونطق Welcome to CIA SYSTEM
+                        // فتح الصفحة الرئيسية ونطق العبارة
                         openMainSystem(user);
                         playWelcomeVoice();
                     }
-                }, 100); // 100ms * 50 = 5000ms (5 ثوانٍ)
+                }, 100); // 100ms * 50 = 5000ms (5 ثوانٍ بالضبط)
 
             } else {
                 errorMsg.style.display = "block";
