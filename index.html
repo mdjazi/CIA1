@@ -34,7 +34,7 @@
             position: relative;
         }
 
-        /* خلفية مصفوفة البرمجيات المتحركة لشاشة الدخول */
+        /* خلفية مصفوفة البرمجيات المتحركة */
         #cyber-canvas {
             position: fixed;
             top: 0;
@@ -46,7 +46,7 @@
             opacity: 0.45;
         }
 
-        /* الشعار الضخم المتحرك خلف الشاشة */
+        /* الشعار الضخم المتحرك */
         .bg-watermark-logo {
             position: fixed;
             top: 50%;
@@ -123,7 +123,7 @@
             word-break: break-all;
         }
 
-        /* شاشة تسجيل الدخول بالتصميم الواقعي والشفاف */
+        /* شاشة تسجيل الدخول */
         .login-card {
             position: relative;
             z-index: 10;
@@ -245,7 +245,7 @@
             margin-top: 10px;
         }
 
-        /* النظام الرئيسي الشفاف والمتناسق */
+        /* النظام الرئيسي */
         #main-system {
             display: none;
             width: 100%;
@@ -313,7 +313,7 @@
         }
         .badge-leader { background: var(--gold-color); color: #000; }
 
-        /* مجلدات سطح المكتب الشفافة */
+        /* مجلدات سطح المكتب */
         .folder-grid-panel {
             background: rgba(8, 13, 20, 0.45);
             backdrop-filter: blur(20px);
@@ -605,9 +605,6 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Seal_of_the_Central_Intelligence_Agency.svg" alt="CIA Logo">
     </div>
 
-    <!-- عنصر الصوت المرفق لفك التشفير -->
-    <audio id="hackingAudio" src="https://actions.google.com/sounds/v1/science_fiction/teleporting_sound.ogg" preload="auto" loop></audio>
-
     <!-- شاشة فك التشفير لمدة 5 ثوانٍ -->
     <div id="decryption-screen">
         <div class="decrypt-box">
@@ -660,7 +657,7 @@
             </div>
         </div>
 
-        <!-- سطح المكتب الرئيسي الشفاف بعد تسجيل الدخول -->
+        <!-- سطح المكتب الرئيسي بعد تسجيل الدخول -->
         <div class="folder-grid-panel" id="folderHome">
             <div class="dashboard-header">
                 <div class="dashboard-logo">
@@ -862,7 +859,7 @@
     </div>
 
     <script>
-        /* خلفية مصفوفة الكود والشبكة المتحركة (Matrix Cyber Canvas) */
+        /* خلفية مصفوفة الكود والشبكة المتحركة */
         const canvas = document.getElementById('cyber-canvas');
         const ctx = canvas.getContext('2d');
         function resizeCanvas() {
@@ -894,33 +891,54 @@
         }
         setInterval(drawMatrix, 35);
 
-        /* تشغيل صوت الهكر والتشفير المخصص لمدة 5 ثوانٍ */
-        function startHackingAudio() {
-            const audio = document.getElementById("hackingAudio");
-            if (audio) {
-                audio.currentTime = 0;
-                audio.play().catch(e => console.log("Audio play blocked by user interaction"));
+        /* توليد صوت فك التشفير والتجاوب البرمجي المباشر أوتوماتيكياً عبر Web Audio API */
+        let globalAudioCtx = null;
+        let cipherSoundInterval = null;
+
+        function startCipherSound() {
+            try {
+                if (!globalAudioCtx) {
+                    globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (globalAudioCtx.state === 'suspended') {
+                    globalAudioCtx.resume();
+                }
+
+                cipherSoundInterval = setInterval(() => {
+                    if (!globalAudioCtx) return;
+                    const osc = globalAudioCtx.createOscillator();
+                    const gain = globalAudioCtx.createGain();
+
+                    osc.type = Math.random() > 0.5 ? "sine" : "square";
+                    osc.frequency.setValueAtTime(600 + (Math.random() * 800), globalAudioCtx.currentTime);
+
+                    gain.gain.setValueAtTime(0.05, globalAudioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, globalAudioCtx.currentTime + 0.08);
+
+                    osc.connect(gain);
+                    gain.connect(globalAudioCtx.destination);
+                    osc.start();
+                    osc.stop(globalAudioCtx.currentTime + 0.08);
+                }, 70);
+            } catch(e) { console.log(e); }
+        }
+
+        function stopCipherSound() {
+            if (cipherSoundInterval) {
+                clearInterval(cipherSoundInterval);
+                cipherSoundInterval = null;
             }
         }
 
-        function stopHackingAudio() {
-            const audio = document.getElementById("hackingAudio");
-            if (audio) {
-                audio.pause();
-                audio.currentTime = 0;
-            }
-        }
-
-        /* الصوت البشري بدون نقاط في الكلمة "Welcome to CIA SYSTEM" */
+        /* الصوت البشري الخشن المتصل بدون نقاط */
         function playWelcomeVoice() {
             try {
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel();
-                    // نطق العبارة كـ "CIA" متصلة ودون نقاط
                     const utterance = new SpeechSynthesisUtterance("Welcome to CIA SYSTEM");
                     utterance.lang = "en-US";
-                    utterance.pitch = 0.35; // صوت رجالي ضخم وعميق جداً
-                    utterance.rate = 0.82;
+                    utterance.pitch = 0.35; // صوت رجالي عميق وغليظ
+                    utterance.rate = 0.82;  // سرعة رزينة
 
                     const voices = window.speechSynthesis.getVoices();
                     const realisticMale = voices.find(v => 
@@ -929,21 +947,6 @@
                     if (realisticMale) utterance.voice = realisticMale;
                     window.speechSynthesis.speak(utterance);
                 }
-
-                // طقطقة راديو خفيفة للتأكيد
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const bufferSize = audioCtx.sampleRate * 0.12;
-                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-                const data = buffer.getChannelData(0);
-                for (let i = 0; i < bufferSize; i++) { data[i] = Math.random() * 2 - 1; }
-                const noise = audioCtx.createBufferSource();
-                noise.buffer = buffer;
-                const gain = audioCtx.createGain();
-                gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
-                noise.connect(gain);
-                gain.connect(audioCtx.destination);
-                noise.start();
             } catch(e) { console.log(e); }
         }
 
@@ -1019,12 +1022,12 @@
                 errorMsg.style.display = "none";
                 localStorage.setItem("active_cia_user", user);
                 
-                // بدء مرحلة فك التشفير مع تشغيل صوت الهكر المخصص
+                // إخفاء شاشة الدخول وعرض شاشة فك التشفير مع تشغيل الصوت مباشرة
                 document.getElementById("login-screen").style.display = "none";
                 const decryptScreen = document.getElementById("decryption-screen");
                 decryptScreen.style.display = "flex";
                 
-                startHackingAudio();
+                startCipherSound();
 
                 let progress = 0;
                 const progressBar = document.getElementById("decrypt-progress");
@@ -1033,18 +1036,18 @@
                 const interval = setInterval(() => {
                     progress += 2;
                     progressBar.style.width = progress + "%";
-                    codeStream.innerText = "0x" + Math.random().toString(16).substr(2, 8).toUpperCase() + "... DECRYPTING HACKING SOUND PACKETS [" + progress + "%]";
+                    codeStream.innerText = "0x" + Math.random().toString(16).substr(2, 8).toUpperCase() + "... DECRYPTING PACKETS [" + progress + "%]";
                     
                     if (progress >= 100) {
                         clearInterval(interval);
-                        stopHackingAudio();
+                        stopCipherSound();
                         decryptScreen.style.display = "none";
                         
-                        // فتح الصفحة الرئيسية ونطق العبارة
+                        // فتح الواجهة الرئيسية ونطق العبارة
                         openMainSystem(user);
                         playWelcomeVoice();
                     }
-                }, 100); // 100ms * 50 = 5000ms (5 ثوانٍ بالضبط)
+                }, 100); // 5 ثوانٍ محددة بالدقة
 
             } else {
                 errorMsg.style.display = "block";
